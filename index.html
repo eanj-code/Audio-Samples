@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta name="google-site-verification" content="ftFOlJETX-2KNjaPh8W6s8lhigItRuu9fOmjHZZ0nY0" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Audio Samples</title>
+  </head>
+  <style type="text/css">
+    table {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    thead>tr>th:first-child {
+      width: 96px;
+    }
+
+    @media (max-width: 767px) {
+      .big-screen {
+        display: none;
+      }
+    }
+
+    @media (min-width: 767px) {
+      .small-screen {
+        display: none;
+      }
+    }
+    td {
+      text-align: center;
+    }
+
+    .slidecontainer {
+      width: 100%;
+    }
+    
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 25px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    
+    .slider:hover {
+      opacity: 1;
+    }
+    
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      background: #04AA6D;
+      cursor: pointer;
+    }
+    
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      background: #04AA6D;
+      cursor: pointer;
+    }
+    </style>
+
+
+
+  <body>
+    <header class="header">
+      <div class="jumbotron bg-info text-center">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <h1><a class="text-light">Audio Samples</h1><br></a>  
+              <h3 class="text-light"></h3>
+              <h4 class="text-light"></h4>
+              <h4 class="text-light"></h4>
+
+
+              
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row" id="result">
+        <div class="col-md-12">     
+
+                  
+            <div class="big-screen">
+
+
+              <br /><br />
+              <h2>Baselines Samples</h2>
+              <hr style="border: solid 2px dimgrey;">
+
+              <br /><br />
+              
+              <table class="table">
+                  <thead>
+                      <tr align="center">
+                          <th colspan=6><h4>TacoSpawn - Gender
+                          </h4></th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                          <!-- single sentence -->
+                          <tr>
+                            <td>
+                              <b>Male</b>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/male/1.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/male/2.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/male/3.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/male/4.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/male/5.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                          </tr>
+
+                          <tr>
+                            <td>
+                              <b>Female</b>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/female/1.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/female/2.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/female/3.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/female/4.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                            <td>
+                              <audio controls>
+                                <source src="./baselines/tacospawn/female/5.mp3" type="audio/mp3" />
+                                Your browser does not support the audio element.
+                              </audio>
+                            </td>
+                          </tr>
+                          
+                  </tbody>
+
+                  
+                  <thead>
+
+                    <tr align="center">
+                        <th colspan=6><h4>Speaker Characteristics Guided Speech Synthesis - Gender</h4></th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!-- single sentence -->
+                    <tr>
+                      <td>
+                        <b>Male</b>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/male/1.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/male/2.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/male/3.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/male/4.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/male/5.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <b>Female</b>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/female/1.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/female/2.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/female/3.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/female/4.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                      <td>
+                        <audio controls>
+                          <source src="./baselines/scgss/female/5.wav" type="audio/wav" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </td>
+                    </tr>
+                    
+            </tbody>
+
+              </table>
+
+            </div>
+                  
+                  <div class="big-screen">
+
+
+                    <br /><br />
+                     <h2>Generated with Proposed Technique </h2>
+                     <hr style="border: solid 2px dimgrey;">
+                     <h4> The following samples are generated by adjusting the intensity of a single attribute, while keeping all other attributes fixed.</h4>
+
+                     <br /><br />
+                    
+                    <table class="table">
+                        <thead>
+        
+                            <tr align="center">
+                                <th colspan=8><h4>Mascuilinity Control</h4></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                                
+                                <tr>
+                                    <th style="text-align:center;">   Least Masculine</th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   Most Masculine</th>                         
+                                </tr>
+                                <!-- single sentence -->
+
+                                <tr>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (8).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (7).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (6).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (5).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (4).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (3).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (2).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./Masculinity/temp (1).wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                </tr>
+                                
+                        </tbody>
+
+
+                        <thead>
+        
+                          <tr align="center">
+                              <th colspan=8><h4>Youthfulness Control</h4></th>
+                          </tr>
+                      </thead>
+
+                      <tbody>
+                              
+                              <tr>
+                                  <th style="text-align:center;">   Least Youthful</th>
+                                  <th style="text-align:center;">   </th>
+                                  <th style="text-align:center;">   </th>
+                                  <th style="text-align:center;">   </th>
+                                  <th style="text-align:center;">   </th>
+                                  <th style="text-align:center;">   </th>
+                                  <th style="text-align:center;">   </th>
+                                  <th style="text-align:center;">   Most Youthful</th>                         
+                              </tr>
+                              <!-- single sentence -->
+
+                              <tr>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (1).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (2).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (3).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (4).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (5).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (6).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (7).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                                <td>
+                                  <audio controls>
+                                    <source src="./Youthfulness/temp (8).wav" type="audio/wav" />
+                                    Your browser does not support the audio element.
+                                  </audio>
+                                </td>
+                              </tr>
+                              
+                      </tbody>
+
+                      <thead>
+        
+                        <tr align="center">
+                            <th colspan=8><h4>Custom Intensities (Drag the sliders below to customize the voice)</h4></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr align="center">
+                          <td>Masculinity</td>
+                          <td colspan=7>
+                            <input type="range" min="1" max="8" value="4" class="slider" id="masVal">
+                          </td>
+                        </tr>
+                        <tr align="center">
+                          <td>Youthfulness</td>
+                          <td colspan=7>
+                            <input type="range" min="3" max="10" value="6" class="slider" id="youVal">
+                          </td>
+                        </tr>
+                        <tr align="center">
+                          <td colspan=8>
+                            <audio id="custom_audio"  controls="controls">
+                              <source id="custom_audio_source" src="" type="audio/wav" />
+                              Your browser does not support the audio element.
+                          </audio>
+                        </td>
+                          
+                        </tr>
+                      </tbody>
+
+
+
+                      <thead>
+        
+                        <tr align="center">
+                            <th colspan=8><h4></h4></th>
+                        </tr>
+                    </thead>
+
+                  
+                        
+
+
+
+                    </table>
+
+                  </div>
+                            
+
+                   <!------------------------------------------------------------------------------------------------------------------------------->
+                 
+
+                   <!------------------------------------------------------------------------------------------------------------------------------->
+
+                  <div class="big-screen">
+
+
+                   
+                    <br /><br />
+                     <h2>Ablation Study </h2>
+                     <hr style="border: solid 2px dimgrey;">
+                     <h4> The following models are trained for <b>Masculinity</b> control</h4>
+                     <ul>
+                        <li>Proposed Model</li>
+                        <li>Proposed Model <b>without attribute intensity loss</b></li>
+                        <li>Proposed Model <b>with binary label as intensity (i.e. "Female" = 0%, "Male" = 100%)</b></li>
+
+                      </ul>
+
+                     <br /><br />
+                    
+                    <table class="table">
+                        <thead>
+        
+                            <tr align="center">
+                                <th colspan=8><h4>Masculinity Intensity</h4></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                                
+                                <tr>
+                                  <th style="text-align:center;">  </th>
+                                    <th style="text-align:center;"> 0%  </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">  </th>
+                                    <th style="text-align:center;"> 50% </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;">   </th>
+                                    <th style="text-align:center;"> 100% </th>                         
+                                </tr>
+                                <!-- single sentence -->
+                                 
+
+                                <tr> 
+                                  <td>Proposed Model</td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/100.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/80.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/65.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/50.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/30.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/15.wav"  type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/proposed/0.wav"  type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr> 
+                                  <td><b>without attribute intensity loss</b></td>
+
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/100.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/80.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/65.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/50.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/30.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/15.wav"  type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/no-loss/0.wav"  type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                </tr>
+                                <tr> 
+                                  <td><b>with binary label as intensity</b></td>
+
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/100.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/80.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/65.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/50.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/30.wav" type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/15.wav"  type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                  <td>
+                                    <audio controls>
+                                      <source src="./ablation/binary/0.wav"  type="audio/wav" />
+                                      Your browser does not support the audio element.
+                                    </audio>
+                                  </td>
+                                </tr>
+                                
+                        </tbody>
+
+
+                                          
+
+
+
+                    </table>
+
+                  </div>
+                 
+        </div>
+      </div>
+      <hr>
+      <div class="row" id="ref">
+        <div class="col">
+          <!--<h2>References</h2>
+          
+         -->
+        </div>
+      </div>
+      <hr>
+      <!-- <div class="row" id="contact">
+          <div class="col">
+            <h2>Contact</h2>
+            <div></div>
+          </div>
+        </div> -->
+    </div>
+  </main>
+  <footer class="bg-secondary text-light mt-4 pt-3 pb-2 ">
+    <div class="container">
+      <p class="text-center">
+        
+      </p>
+    </div>
+  </footer>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+
+  <script>
+    var slider_mas = document.getElementById("masVal");
+    var slider_you = document.getElementById("youVal");
+    var audio = document.getElementById("custom_audio");
+    var audio_src = document.getElementById("custom_audio_source");
+    audio_src.src = `./custom_samples/${slider_mas.value}_${slider_you.value}.wav`;
+    audio.load();
+    audio.play();
+
+
+   
+
+    slider_mas.oninput = function() {
+          audio_src.src = `./custom_samples/${slider_mas.value}_${slider_you.value}.wav`;
+          audio.load();
+          audio.play();
+    }
+    slider_you.oninput = function() {
+          audio_src.src = `./custom_samples/${slider_mas.value}_${slider_you.value}.wav`;
+          audio.load();
+          audio.play();
+    }
+
+
+  </script>
+</body>
+
+
+
+</html>
