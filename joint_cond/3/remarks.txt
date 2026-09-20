@@ -1,0 +1,2 @@
+Monster
+When the face crop already conveys a clear non-human identity, full-artwork conditioning may contribute less additional character information, leading to relatively small changes in the generated voice.

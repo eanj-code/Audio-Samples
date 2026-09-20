@@ -12,91 +12,76 @@
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <title>Audio Samples</title>
-</head>
-<style type="text/css">
-  table {
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  audio {
-    width: 100%;
-  }
-
-  thead>tr>th:first-child {
-    width: 96px;
-  }
-
+<style>
+  :root { --ink: #20333d; --muted: #61727c; --accent: #167d91; --line: #dfe7eb; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f3f6f8; color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+  .container { width: 100%; max-width: none; margin: auto; padding: 0 24px; }
+  .page-header { padding: 42px 0 32px; }
+  .page-header h1 { margin: 0; font-size: 2rem; font-weight: 700; letter-spacing: -.03em; }
+  .section-nav { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 16px; }
+  .section-nav a { color: var(--accent); font-size: .9rem; font-weight: 600; text-decoration: none; }
+  .section-nav a:hover { text-decoration: underline; }
+  .study-section { margin: 0 0 40px; padding: 30px 24px 32px; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--accent); border-radius: 10px; box-shadow: 0 4px 16px rgba(32, 51, 61, .035); scroll-margin-top: 24px; }
+  .study-section > h2 { display: flex; align-items: baseline; gap: 16px; margin: 0 0 28px; padding-bottom: 22px; border-bottom: 1px solid var(--line); font-size: 1.65rem; line-height: 1.3; font-weight: 700; letter-spacing: -.025em; }
+  .study-section > h2::before { content: attr(data-number); flex-shrink: 0; color: var(--accent); font-size: .85rem; font-weight: 700; letter-spacing: .08em; }
+  .study-section > h2:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+  .subsection + .subsection, .demo-subsection { margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .study-section h3 { margin: 0 0 12px; font-size: 1.15rem; line-height: 1.4; font-weight: 650; }
+  .study-section h4 { margin: 0; font-size: .95rem; line-height: 1.5; font-weight: 600; }
+  .section-description { margin: 0 0 20px; max-width: 850px; color: var(--muted); font-size: .95rem; }
+  .model-variants { padding-left: 22px; margin-bottom: 24px; color: var(--muted); font-size: .9rem; }
+  .model-variants li { margin-bottom: 5px; }
+  .table-scroll { overflow-x: auto; margin-top: 18px; border: 1px solid var(--line); border-radius: 8px; }
+  .table { width: 100%; min-width: 1080px; margin: 0; table-layout: fixed; border-collapse: collapse; }
+  .table td, .table th { padding: 16px 10px; vertical-align: middle; text-align: center; border-top: 1px solid var(--line); font-size: .85rem; }
+  .table thead th { padding: 12px 16px; text-align: left; background: #edf4f6; border-bottom: 0; }
+  .table thead:first-child th { border-top: 0; }
+  .table tbody th { font-weight: 500; color: var(--muted); }
+  audio { display: block; width: 100%; height: 40px; }
+  .slider, .control-panel input[type="range"] { width: 100%; height: 20px; cursor: pointer; accent-color: var(--accent); }
+  .control-panel { width: 100%; max-width: 700px; margin: 20px auto 0; padding: 20px 24px; text-align: left; background: #f7f9fa; border: 1px solid var(--line); border-radius: 8px; }
+  a:focus-visible, input:focus-visible, audio:focus-visible, .table-scroll:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
   @media (max-width: 767px) {
-    .big-screen {
-      display: none;
-    }
+    .container { padding: 0 16px; }
+    .page-header { padding: 28px 0 24px; }
+    .page-header h1 { font-size: 1.75rem; }
+    .study-section { padding: 22px 18px; margin-bottom: 28px; }
+    .study-section > h2 { font-size: 1.3rem; gap: 12px; }
+    .control-panel { padding: 16px; }
   }
-
-  @media (min-width: 767px) {
-    .small-screen {
-      display: none;
-    }
-  }
-
-  td {
-    text-align: center;
-  }
-
-  .slidecontainer {
-    width: 100%;
-  }
-
-  .slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-  }
-
-  .slider:hover {
-    opacity: 1;
-  }
-
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #04AA6D;
-    cursor: pointer;
-  }
-
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #04AA6D;
-    cursor: pointer;
-  }
+  .joint-table { width: 100%; min-width: 1180px; }
+  .joint-artwork-column { width: 20%; }
+  .joint-face-column { width: 10%; }
+  .joint-sentence-column { width: 16%; }
+  .joint-output-column { width: 18%; }
+  .joint-table thead th { padding: 12px; overflow-wrap: anywhere; border-right: 1px solid var(--line); }
+  .joint-table td { padding: 16px 12px; text-align: left; }
+  .joint-image { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #edf2f5; border: 1px solid var(--line); border-radius: 6px; }
+  .joint-artwork-cell img { aspect-ratio: auto; height: auto; }
+  .joint-face-cell .joint-image { max-width: 110px; margin-inline: auto; }
+  .joint-table .joint-face-cell { text-align: center; vertical-align: middle; }
+  .joint-image-missing { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: .85rem; }
+  .joint-table .joint-sentence { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .95rem; line-height: 1.7; }
+  .joint-audio-label { display: block; margin-bottom: 6px; color: var(--muted); font-size: .8rem; }
+  .joint-strength-slider { display: block; margin: 0; }
+  .joint-strength-scale { display: flex; justify-content: space-between; margin: 4px 0 16px; color: var(--muted); font-size: .75rem; }
+  .joint-table .joint-remarks-row td { padding: 0 12px 18px; border-top: 0; vertical-align: top; }
+  .joint-remarks-field { padding: 14px 16px; background: #edf6f8; border: 1px solid #cce2e8; border-left: 3px solid var(--accent); border-radius: 6px; }
+  .joint-remarks-label { margin-bottom: 6px; color: var(--accent); font-size: .85rem; font-weight: 700; }
+  .joint-remarks { margin: 0; color: var(--ink); font-size: .9rem; line-height: 1.65; white-space: pre-wrap; overflow-wrap: anywhere; }
 </style>
-
-
+</head>
 
 <body>
-  <header class="header">
-    <div class="jumbotron bg-info text-center">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-12">
-            <h1><a class="text-light">Audio Samples</h1><br></a>
-            <h3 class="text-light"></h3>
-            <h4 class="text-light"></h4>
-            <h4 class="text-light"></h4>
-
-
-
-          </div>
-        </div>
-      </div>
+  <header class="page-header">
+    <div class="container">
+      <h1>Audio Samples</h1>
+      <nav class="section-nav" aria-label="Page sections">
+        <a href="#attribute-guided-voice-customization">01 &nbsp; Attribute-guided customization</a>
+        <a href="#joint-visual-and-attribute-control">02 &nbsp; Joint control</a>
+        <a href="#ablation-study">03 &nbsp; Ablation study</a>
+      </nav>
     </div>
   </header>
   <main>
@@ -104,16 +89,12 @@
       <div class="row" id="result">
         <div class="col-md-12">
 
+          <section class="study-section" id="attribute-guided-voice-customization" aria-labelledby="attribute-guided-title">
+            <h2 id="attribute-guided-title" data-number="01">Attribute-Guided Voice Customization</h2>
+          <div class="subsection">
+            <h3>Baseline Samples</h3>
 
-          <div class="big-screen">
-
-
-            <br /><br />
-            <h2>Baselines Samples</h2>
-            <hr style="border: solid 2px dimgrey;">
-
-            <br /><br />
-
+            <div class="table-scroll" role="region" aria-label="Audio sample comparison" tabindex="0">
             <table class="table">
               <thead>
                 <tr align="center">
@@ -200,6 +181,90 @@
 
               </tbody>
 
+              <thead>
+                <tr align="center">
+                  <th colspan=6>
+                    <h4>TacoSpawn - Youthfulness
+                    </h4>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- single sentence -->
+                <tr>
+                  <td>
+                    <b>Adult</b>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/adult/1.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/adult/2.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/adult/3.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/adult/4.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/adult/5.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <b>Child</b>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/child/1.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/child/2.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/child/3.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/child/4.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/tacospawn/child/5.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                </tr>
+
+              </tbody>
 
               <thead>
 
@@ -286,27 +351,108 @@
 
               </tbody>
 
+              <thead>
+
+                <tr align="center">
+                  <th colspan=6>
+                    <h4>Speaker Characteristics Guided Speech Synthesis - Youthfulness</h4>
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <!-- single sentence -->
+                <tr>
+                  <td>
+                    <b>Adult</b>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/adult/1.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/adult/2.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/adult/3.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/adult/4.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/adult/5.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    <b>Child</b>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/child/1.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/child/2.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/child/3.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/child/4.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                  <td>
+                    <audio controls>
+                      <source src="./baselines/scgss/child/5.wav" type="audio/wav" />
+                      Your browser does not support the audio element.
+                    </audio>
+                  </td>
+                </tr>
+
+              </tbody>
+
             </table>
+            </div>
 
           </div>
 
-          <div class="big-screen">
+          <div class="subsection">
+            <h3>Generated with Proposed Technique</h3>
+            <p class="section-description">The following samples are generated by adjusting the strength of a single attribute, while keeping all
+              other attributes fixed.</p>
 
-
-            <br /><br />
-            <h2>Generated with Proposed Technique </h2>
-            <hr style="border: solid 2px dimgrey;">
-            <h4> The following samples are generated by adjusting the intensity of a single attribute, while keeping all
-              other attributes fixed.</h4>
-
-            <br /><br />
-
+            <div class="table-scroll" role="region" aria-label="Audio sample comparison" tabindex="0">
             <table class="table">
               <thead>
 
                 <tr align="center">
                   <th colspan=8>
-                    <h4>Mascuilinity Control</h4>
+                    <h4>Masculinity Control</h4>
                   </th>
                 </tr>
               </thead>
@@ -377,7 +523,6 @@
                 </tr>
 
               </tbody>
-
 
               <thead>
 
@@ -459,20 +604,21 @@
 
                 <tr align="center">
                   <th colspan=8>
-                    <h4>Custom Intensities (Drag the sliders below to customize the voice)</h4>
+                    <h4>Custom Strengths</h4>
+                    <p class="section-description" style="margin: 4px 0 0;">Drag the sliders below to customize the voice.</p>
                   </th>
                 </tr>
               </thead>
 
               <tbody>
                 <tr align="center">
-                  <td>Masculinity</td>
+                  <td><label for="masVal">Masculinity</label></td>
                   <td colspan=7>
                     <input type="range" min="1" max="8" value="4" class="slider" id="masVal">
                   </td>
                 </tr>
                 <tr align="center">
-                  <td>Youthfulness</td>
+                  <td><label for="youVal">Youthfulness</label></td>
                   <td colspan=7>
                     <input type="range" min="3" max="10" value="6" class="slider" id="youVal">
                   </td>
@@ -488,55 +634,220 @@
                 </tr>
               </tbody>
 
-
-
-              <thead>
-
-                <tr align="center">
-                  <th colspan=8>
-                    <h4></h4>
-                  </th>
-                </tr>
-              </thead>
-
-
-
-
-
-
             </table>
+            </div>
 
           </div>
 
+          </section>
+
+          <section class="study-section" id="joint-visual-and-attribute-control" aria-labelledby="joint-control-title">
+            <h2 id="joint-control-title" data-number="02">Joint Visual and Attribute Control</h2>
+            <p class="section-description"><small>The character artwork used in this demonstration was generated using OpenAI’s image generation service. These images are independent of the training corpus and are used solely as out-of-distribution visual inputs for demonstration.</small></p>
+            <!-- joint-samples:start -->
+            <div class="table-scroll" role="region" aria-label="Joint visual and attribute control samples" tabindex="0">
+              <table class="table joint-table">
+                <colgroup><col class="joint-artwork-column"><col class="joint-face-column"></colgroup>
+                <colgroup><col class="joint-sentence-column"><col span="3" class="joint-output-column"></colgroup>
+                <thead>
+                  <tr>
+                    <th colspan="2" scope="colgroup">Visual input</th>
+                    <th rowspan="2" scope="col">Sentence</th>
+                    <th rowspan="2" scope="col">RVTTS (face only)</th>
+                    <th rowspan="2" scope="col">Proposed (face only)</th>
+                    <th rowspan="2" scope="col">Proposed (full artwork)</th>
+                  </tr>
+                  <tr>
+                    <th scope="col">Full artwork</th>
+                    <th scope="col">Face only</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2" class="joint-artwork-cell"><img class="joint-image" src="./joint_cond/1/art.png" alt="Full artwork for sample 1" loading="lazy"></td>
+                    <td rowspan="2" class="joint-face-cell"><img class="joint-image" src="./joint_cond/1/face.png" alt="Face only for sample 1" loading="lazy"></td>
+                    <td rowspan="2" class="joint-sentence">Now try it.</td>
+                    <td rowspan="2">
+                      <audio id="joint-audio-rvtts-1" controls preload="none" src="./joint_cond/1/rvtts/output.wav" aria-label="RVTTS (face only) for sample 1">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-face-1">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-face-1" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/1/face/0.wav&quot;, &quot;./joint_cond/1/face/1.wav&quot;, &quot;./joint_cond/1/face/2.wav&quot;, &quot;./joint_cond/1/face/3.wav&quot;, &quot;./joint_cond/1/face/4.wav&quot;]" data-audio-target="joint-audio-face-1">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-face-1" controls preload="none" src="./joint_cond/1/face/4.wav" aria-label="Proposed (face only) for sample 1">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-full-1">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-full-1" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/1/full/0.wav&quot;, &quot;./joint_cond/1/full/1.wav&quot;, &quot;./joint_cond/1/full/2.wav&quot;, &quot;./joint_cond/1/full/3.wav&quot;, &quot;./joint_cond/1/full/4.wav&quot;]" data-audio-target="joint-audio-full-1">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-full-1" controls preload="none" src="./joint_cond/1/full/4.wav" aria-label="Proposed (full artwork) for sample 1">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                  </tr>
+                  <tr class="joint-remarks-row"><td colspan="2"><div class="joint-remarks-field"><div class="joint-remarks-label">Remarks</div><p class="joint-remarks"><strong>Demonic character</strong>: Full-artwork conditioning produces a more pronounced reverberant, demonic voice quality.</p></div></td></tr>
+                  <tr>
+                    <td rowspan="2" class="joint-artwork-cell"><img class="joint-image" src="./joint_cond/2/art.png" alt="Full artwork for sample 2" loading="lazy"></td>
+                    <td rowspan="2" class="joint-face-cell"><img class="joint-image" src="./joint_cond/2/face.png" alt="Face only for sample 2" loading="lazy"></td>
+                    <td rowspan="2" class="joint-sentence">We had neither to fear fatiguing heat nor drenching rain.</td>
+                    <td rowspan="2">
+                      <audio id="joint-audio-rvtts-2" controls preload="none" src="./joint_cond/2/rvtts/output.wav" aria-label="RVTTS (face only) for sample 2">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-face-2">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-face-2" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/2/face/0.wav&quot;, &quot;./joint_cond/2/face/1.wav&quot;, &quot;./joint_cond/2/face/2.wav&quot;, &quot;./joint_cond/2/face/3.wav&quot;, &quot;./joint_cond/2/face/4.wav&quot;]" data-audio-target="joint-audio-face-2">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-face-2" controls preload="none" src="./joint_cond/2/face/4.wav" aria-label="Proposed (face only) for sample 2">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-full-2">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-full-2" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/2/full/0.wav&quot;, &quot;./joint_cond/2/full/1.wav&quot;, &quot;./joint_cond/2/full/2.wav&quot;, &quot;./joint_cond/2/full/3.wav&quot;, &quot;./joint_cond/2/full/4.wav&quot;]" data-audio-target="joint-audio-full-2">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-full-2" controls preload="none" src="./joint_cond/2/full/4.wav" aria-label="Proposed (full artwork) for sample 2">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                  </tr>
+                  <tr class="joint-remarks-row"><td colspan="2"><div class="joint-remarks-field"><div class="joint-remarks-label">Remarks</div><p class="joint-remarks"><strong>Large robot</strong>: Full-artwork conditioning produces a deeper, heavier mechanical voice with stronger reverberant characteristics, consistent with the character&#x27;s larger apparent scale.</p></div></td></tr>
+                  <tr>
+                    <td rowspan="2" class="joint-artwork-cell"><img class="joint-image" src="./joint_cond/3/art.png" alt="Full artwork for sample 3" loading="lazy"></td>
+                    <td rowspan="2" class="joint-face-cell"><img class="joint-image" src="./joint_cond/3/face.png" alt="Face only for sample 3" loading="lazy"></td>
+                    <td rowspan="2" class="joint-sentence">What would they not give for a nest like mine.</td>
+                    <td rowspan="2">
+                      <audio id="joint-audio-rvtts-3" controls preload="none" src="./joint_cond/3/rvtts/output.wav" aria-label="RVTTS (face only) for sample 3">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-face-3">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-face-3" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/3/face/0.wav&quot;, &quot;./joint_cond/3/face/1.wav&quot;, &quot;./joint_cond/3/face/2.wav&quot;, &quot;./joint_cond/3/face/3.wav&quot;, &quot;./joint_cond/3/face/4.wav&quot;]" data-audio-target="joint-audio-face-3">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-face-3" controls preload="none" src="./joint_cond/3/face/4.wav" aria-label="Proposed (face only) for sample 3">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-full-3">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-full-3" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/3/full/0.wav&quot;, &quot;./joint_cond/3/full/1.wav&quot;, &quot;./joint_cond/3/full/2.wav&quot;, &quot;./joint_cond/3/full/3.wav&quot;, &quot;./joint_cond/3/full/4.wav&quot;]" data-audio-target="joint-audio-full-3">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-full-3" controls preload="none" src="./joint_cond/3/full/4.wav" aria-label="Proposed (full artwork) for sample 3">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                  </tr>
+                  <tr class="joint-remarks-row"><td colspan="2"><div class="joint-remarks-field"><div class="joint-remarks-label">Remarks</div><p class="joint-remarks"><strong>Monster</strong>: When the face crop already conveys a clear non-human identity, full-artwork conditioning may contribute less additional character information, leading to relatively small changes in the generated voice.</p></div></td></tr>
+                  <tr>
+                    <td rowspan="2" class="joint-artwork-cell"><img class="joint-image" src="./joint_cond/4/art.png" alt="Full artwork for sample 4" loading="lazy"></td>
+                    <td rowspan="2" class="joint-face-cell"><img class="joint-image" src="./joint_cond/4/face.png" alt="Face only for sample 4" loading="lazy"></td>
+                    <td rowspan="2" class="joint-sentence">To feel without restraint—this is my path, this is the fox I follow.</td>
+                    <td rowspan="2">
+                      <audio id="joint-audio-rvtts-4" controls preload="none" src="./joint_cond/4/rvtts/output.wav" aria-label="RVTTS (face only) for sample 4">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-face-4">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-face-4" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/4/face/0.wav&quot;, &quot;./joint_cond/4/face/1.wav&quot;, &quot;./joint_cond/4/face/2.wav&quot;, &quot;./joint_cond/4/face/3.wav&quot;, &quot;./joint_cond/4/face/4.wav&quot;]" data-audio-target="joint-audio-face-4">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-face-4" controls preload="none" src="./joint_cond/4/face/4.wav" aria-label="Proposed (face only) for sample 4">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-full-4">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-full-4" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/4/full/0.wav&quot;, &quot;./joint_cond/4/full/1.wav&quot;, &quot;./joint_cond/4/full/2.wav&quot;, &quot;./joint_cond/4/full/3.wav&quot;, &quot;./joint_cond/4/full/4.wav&quot;]" data-audio-target="joint-audio-full-4">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-full-4" controls preload="none" src="./joint_cond/4/full/4.wav" aria-label="Proposed (full artwork) for sample 4">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                  </tr>
+                  <tr class="joint-remarks-row"><td colspan="2"><div class="joint-remarks-field"><div class="joint-remarks-label">Remarks</div><p class="joint-remarks"><strong>Slender humanoid robot</strong>: Face-only conditioning already produces a robotic voice, while the full artwork introduces a lighter, more digitally processed quality consistent with the character&#x27;s slender and futuristic design.</p></div></td></tr>
+                  <tr>
+                    <td class="joint-artwork-cell"><img class="joint-image" src="./joint_cond/5/art.png" alt="Full artwork for sample 5" loading="lazy"></td>
+                    <td class="joint-face-cell"><img class="joint-image" src="./joint_cond/5/face.png" alt="Face only for sample 5" loading="lazy"></td>
+                    <td class="joint-sentence">What is it.</td>
+                    <td>
+                      <audio id="joint-audio-rvtts-5" controls preload="none" src="./joint_cond/5/rvtts/output.wav" aria-label="RVTTS (face only) for sample 5">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-face-5">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-face-5" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/5/face/0.wav&quot;, &quot;./joint_cond/5/face/1.wav&quot;, &quot;./joint_cond/5/face/2.wav&quot;, &quot;./joint_cond/5/face/3.wav&quot;, &quot;./joint_cond/5/face/4.wav&quot;]" data-audio-target="joint-audio-face-5">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-face-5" controls preload="none" src="./joint_cond/5/face/4.wav" aria-label="Proposed (face only) for sample 5">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-full-5">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-full-5" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/5/full/0.wav&quot;, &quot;./joint_cond/5/full/1.wav&quot;, &quot;./joint_cond/5/full/2.wav&quot;, &quot;./joint_cond/5/full/3.wav&quot;, &quot;./joint_cond/5/full/4.wav&quot;]" data-audio-target="joint-audio-full-5">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-full-5" controls preload="none" src="./joint_cond/5/full/4.wav" aria-label="Proposed (full artwork) for sample 5">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" class="joint-artwork-cell"><img class="joint-image" src="./joint_cond/6/art.png" alt="Full artwork for sample 6" loading="lazy"></td>
+                    <td rowspan="2" class="joint-face-cell"><img class="joint-image" src="./joint_cond/6/face.png" alt="Face only for sample 6" loading="lazy"></td>
+                    <td rowspan="2" class="joint-sentence">There was no response.</td>
+                    <td rowspan="2">
+                      <audio id="joint-audio-rvtts-6" controls preload="none" src="./joint_cond/6/rvtts/output.wav" aria-label="RVTTS (face only) for sample 6">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-face-6">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-face-6" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/6/face/0.wav&quot;, &quot;./joint_cond/6/face/1.wav&quot;, &quot;./joint_cond/6/face/2.wav&quot;, &quot;./joint_cond/6/face/3.wav&quot;, &quot;./joint_cond/6/face/4.wav&quot;]" data-audio-target="joint-audio-face-6">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-face-6" controls preload="none" src="./joint_cond/6/face/4.wav" aria-label="Proposed (face only) for sample 6">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
+                      <label class="joint-audio-label" for="joint-clip-full-6">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-full-6" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/6/full/0.wav&quot;, &quot;./joint_cond/6/full/1.wav&quot;, &quot;./joint_cond/6/full/2.wav&quot;, &quot;./joint_cond/6/full/3.wav&quot;, &quot;./joint_cond/6/full/4.wav&quot;]" data-audio-target="joint-audio-full-6">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-full-6" controls preload="none" src="./joint_cond/6/full/4.wav" aria-label="Proposed (full artwork) for sample 6">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                  </tr>
+                  <tr class="joint-remarks-row"><td colspan="2"><div class="joint-remarks-field"><div class="joint-remarks-label">Remarks</div><p class="joint-remarks"><strong>Visually similar characters</strong>: At each masculinity-strength setting, the two visually similar characters produce closely matched voice profiles despite their different gender presentation.</p></div></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <script>
+              document.querySelectorAll('.joint-strength-slider').forEach(function (slider) {
+                const clips = JSON.parse(slider.dataset.clips);
+                slider.addEventListener('input', function () {
+                  const player = document.getElementById(this.dataset.audioTarget);
+                  player.pause();
+                  player.src = clips[Number(this.value)];
+                  player.load();
+                  player.play().catch(function () {
+                    // Keep the player available if automatic playback is blocked.
+                  });
+                });
+              });
+            </script>
+            <!-- joint-samples:end -->
+          </section>
 
           <!------------------------------------------------------------------------------------------------------------------------------->
 
-
           <!------------------------------------------------------------------------------------------------------------------------------->
 
-          <div class="big-screen">
-
-
-
-            <br /><br />
-            <h2>Ablation Study </h2>
-            <hr style="border: solid 2px dimgrey;">
-            <h4> The following models are trained for <b>Masculinity</b> control</h4>
-            <ul>
+          <section class="study-section" id="ablation-study" aria-labelledby="ablation-title">
+            <h2 id="ablation-title" data-number="03">Ablation Study</h2>
+            <h3>Attribute strength supervision</h3>
+            <p class="section-description">The following models are trained for <b>Masculinity</b> control</p>
+            <ul class="model-variants">
               <li>Proposed Model</li>
-              <li>Proposed Model <b>without attribute intensity loss</b></li>
-              <li>Proposed Model <b>with binary label as intensity (i.e. "Female" = 0%, "Male" = 100%)</b></li>
+              <li>Proposed Model <b>without attribute strength loss</b></li>
+              <li>Proposed Model <b>with binary label as strength (i.e. "Female" = 0%, "Male" = 100%)</b></li>
 
             </ul>
 
-            <br /><br />
-
+            <div class="table-scroll" role="region" aria-label="Audio sample comparison" tabindex="0">
             <table class="table">
               <thead>
 
                 <tr align="center">
                   <th colspan=8>
-                    <h4>Masculinity Intensity</h4>
+                    <h4>Masculinity Strength</h4>
                   </th>
                 </tr>
               </thead>
@@ -554,7 +865,6 @@
                   <th style="text-align:center;"> 100% </th>
                 </tr>
                 <!-- single sentence -->
-
 
                 <tr>
                   <td>Proposed Model</td>
@@ -602,7 +912,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><b>without attribute intensity loss</b></td>
+                  <td><b>without attribute Strength loss</b></td>
 
                   <td>
                     <audio controls>
@@ -648,7 +958,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><b>with binary label as intensity</b></td>
+                  <td><b>with binary label as strength</b></td>
 
                   <td>
                     <audio controls>
@@ -696,42 +1006,33 @@
 
               </tbody>
 
-
-
-
-
-
             </table>
+            </div>
 
-
-            <div style="margin-top: 40px; text-align: left;">
+            <div class="demo-subsection">
               <!-- Subsection Title with a divider *under* it -->
-              <div
-                style="font-size: 1.2em; font-weight: bold; color: #222; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eaeaea;">
-                Training instability of CVAE
-              </div>
+              <h3>Training instability of CVAE</h3>
 
               <!-- Concise Explanatory Text -->
-              <p style="font-size: 0.95em; color: #555; margin-bottom: 20px; line-height: 1.5;">
-                Prior to convergence, CVAEs exhibit non-monotonic behavior, where scaling down masculinity intensity
+              <p class="section-description">
+                Prior to convergence, CVAEs exhibit non-monotonic behavior, where scaling down masculinity strength
                 triggers abrupt shifts toward feminine characteristics rather than a smooth reduction.
               </p>
 
               <!-- Centered Wrapper to contain the slider and player elements neatly -->
               <div style="text-align: center;">
-                <div
-                  style="display: inline-block; width: 100%; max-width: 700px; text-align: left; background: #fafafa; padding: 20px 25px; border-radius: 8px; border: 1px solid #eee; box-sizing: border-box;">
+                <div class="control-panel">
 
                   <!-- Slider Container -->
                   <div style="margin-bottom: 15px;">
                     <div
                       style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                      <label for="cvaeSlider" style="font-weight: 500; font-size: 0.95em; color: #333;">Intensity
+                      <label for="cvaeSlider" style="font-weight: 500; font-size: 0.95em; color: #333;">Strength
                         Level</label>
-                      <span style="font-weight: bold; font-size: 0.95em; color: #0056b3;" id="sliderValue">0.1</span>
+                      <span style="font-weight: bold; font-size: 0.95em; color: var(--accent);" id="sliderValue">0.1</span>
                     </div>
                     <input type="range" id="cvaeSlider" min="1" max="10" step="1" value="1"
-                      style="width: 100%; cursor: pointer; accent-color: #0056b3;">
+                      style="width: 100%; cursor: pointer; accent-color: var(--accent);">
                     <div
                       style="display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-top: 4px; padding: 0 2px;">
                       <span>0.1</span>
@@ -786,35 +1087,31 @@
               });
             </script>
 
-            <div style="margin-top: 40px; text-align: left;">
+            <div class="demo-subsection">
               <!-- Subsection Title with a divider *under* it -->
-              <div
-                style="font-size: 1.2em; font-weight: bold; color: #222; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eaeaea;">
-                Unnatural Talking Speed of Embedding Prediction
-              </div>
+              <h3>Unnatural Talking Speed of Embedding Prediction</h3>
 
               <!-- Concise Explanatory Text -->
-              <p style="font-size: 0.95em; color: #555; margin-bottom: 20px; line-height: 1.5;">
+              <p class="section-description">
                 Directly predicting embeddings for certain speaker attributes often leads to out-of-distribution
                 representations, resulting in unnatural artifacts such as altered speech pacing.
               </p>
 
               <!-- Centered Wrapper to contain the slider and player elements neatly -->
               <div style="text-align: center;">
-                <div
-                  style="display: inline-block; width: 100%; max-width: 700px; text-align: left; background: #fafafa; padding: 20px 25px; border-radius: 8px; border: 1px solid #eee; box-sizing: border-box;">
+                <div class="control-panel">
 
                   <!-- Slider Container -->
                   <div style="margin-bottom: 15px;">
                     <div
                       style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                       <label for="embedSlider" style="font-weight: 500; font-size: 0.95em; color: #333;">Youthfulness
-                        Intensity Level</label>
-                      <span style="font-weight: bold; font-size: 0.95em; color: #0056b3;"
+                        Strength Level</label>
+                      <span style="font-weight: bold; font-size: 0.95em; color: var(--accent);"
                         id="embedSliderValue">0.1</span>
                     </div>
                     <input type="range" id="embedSlider" min="1" max="10" step="1" value="1"
-                      style="width: 100%; cursor: pointer; accent-color: #0056b3;">
+                      style="width: 100%; cursor: pointer; accent-color: var(--accent);">
                     <div
                       style="display: flex; justify-content: space-between; font-size: 11px; color: #666; margin-top: 4px; padding: 0 2px;">
                       <span>0.1</span>
@@ -869,35 +1166,12 @@
               });
             </script>
 
-
-          </div>
+          </section>
 
         </div>
       </div>
-      <hr>
-      <div class="row" id="ref">
-        <div class="col">
-          <!--<h2>References</h2>
-          
-         -->
-        </div>
-      </div>
-      <hr>
-      <!-- <div class="row" id="contact">
-          <div class="col">
-            <h2>Contact</h2>
-            <div></div>
-          </div>
-        </div> -->
     </div>
   </main>
-  <footer class="bg-secondary text-light mt-4 pt-3 pb-2 ">
-    <div class="container">
-      <p class="text-center">
-
-      </p>
-    </div>
-  </footer>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -919,9 +1193,6 @@
     audio.load();
     audio.play();
 
-
-
-
     slider_mas.oninput = function () {
       audio_src.src = `./custom_samples/${slider_mas.value}_${slider_you.value}.wav`;
       audio.load();
@@ -933,10 +1204,7 @@
       audio.play();
     }
 
-
   </script>
 </body>
-
-
 
 </html>
