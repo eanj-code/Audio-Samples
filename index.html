@@ -50,11 +50,11 @@
     .study-section > h2 { font-size: 1.3rem; gap: 12px; }
     .control-panel { padding: 16px; }
   }
-  .joint-table { width: 100%; min-width: 1180px; }
-  .joint-artwork-column { width: 20%; }
-  .joint-face-column { width: 10%; }
-  .joint-sentence-column { width: 16%; }
-  .joint-output-column { width: 18%; }
+  .joint-table { width: 100%; min-width: 1440px; }
+  .joint-artwork-column { width: 17%; }
+  .joint-face-column { width: 8%; }
+  .joint-sentence-column { width: 15%; }
+  .joint-output-column { width: 15%; }
   .joint-table thead th { padding: 12px; overflow-wrap: anywhere; border-right: 1px solid var(--line); }
   .joint-table td { padding: 16px 12px; text-align: left; }
   .joint-image { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #edf2f5; border: 1px solid var(--line); border-radius: 6px; }
@@ -648,12 +648,13 @@
             <div class="table-scroll" role="region" aria-label="Joint visual and attribute control samples" tabindex="0">
               <table class="table joint-table">
                 <colgroup><col class="joint-artwork-column"><col class="joint-face-column"></colgroup>
-                <colgroup><col class="joint-sentence-column"><col span="3" class="joint-output-column"></colgroup>
+                <colgroup><col class="joint-sentence-column"><col span="4" class="joint-output-column"></colgroup>
                 <thead>
                   <tr>
                     <th colspan="2" scope="colgroup">Visual input</th>
                     <th rowspan="2" scope="col">Sentence</th>
                     <th rowspan="2" scope="col">RVTTS (face only)</th>
+                    <th rowspan="2" scope="col">Proposed (attribute guided only)</th>
                     <th rowspan="2" scope="col">Proposed (face only)</th>
                     <th rowspan="2" scope="col">Proposed (full artwork)</th>
                   </tr>
@@ -669,6 +670,13 @@
                     <td rowspan="2" class="joint-sentence">Now try it.</td>
                     <td rowspan="2">
                       <audio id="joint-audio-rvtts-1" controls preload="none" src="./joint_cond/1/rvtts/output.wav" aria-label="RVTTS (face only) for sample 1">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td rowspan="2">
+                      <label class="joint-audio-label" for="joint-clip-attr-1">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-attr-1" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/1/attr/0.wav&quot;, &quot;./joint_cond/1/attr/1.wav&quot;, &quot;./joint_cond/1/attr/2.wav&quot;, &quot;./joint_cond/1/attr/3.wav&quot;, &quot;./joint_cond/1/attr/4.wav&quot;]" data-audio-target="joint-audio-attr-1">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-attr-1" controls preload="none" src="./joint_cond/1/attr/4.wav" aria-label="Proposed (attribute guided only) for sample 1">
                         Your browser does not support the audio element.
                       </audio></td>
                     <td>
@@ -695,6 +703,13 @@
                       <audio id="joint-audio-rvtts-2" controls preload="none" src="./joint_cond/2/rvtts/output.wav" aria-label="RVTTS (face only) for sample 2">
                         Your browser does not support the audio element.
                       </audio></td>
+                    <td rowspan="2">
+                      <label class="joint-audio-label" for="joint-clip-attr-2">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-attr-2" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/2/attr/0.wav&quot;, &quot;./joint_cond/2/attr/1.wav&quot;, &quot;./joint_cond/2/attr/2.wav&quot;, &quot;./joint_cond/2/attr/3.wav&quot;, &quot;./joint_cond/2/attr/4.wav&quot;]" data-audio-target="joint-audio-attr-2">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-attr-2" controls preload="none" src="./joint_cond/2/attr/4.wav" aria-label="Proposed (attribute guided only) for sample 2">
+                        Your browser does not support the audio element.
+                      </audio></td>
                     <td>
                       <label class="joint-audio-label" for="joint-clip-face-2">Masculinity strength</label>
                       <input type="range" class="slider joint-strength-slider" id="joint-clip-face-2" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/2/face/0.wav&quot;, &quot;./joint_cond/2/face/1.wav&quot;, &quot;./joint_cond/2/face/2.wav&quot;, &quot;./joint_cond/2/face/3.wav&quot;, &quot;./joint_cond/2/face/4.wav&quot;]" data-audio-target="joint-audio-face-2">
@@ -719,6 +734,13 @@
                       <audio id="joint-audio-rvtts-3" controls preload="none" src="./joint_cond/3/rvtts/output.wav" aria-label="RVTTS (face only) for sample 3">
                         Your browser does not support the audio element.
                       </audio></td>
+                    <td rowspan="2">
+                      <label class="joint-audio-label" for="joint-clip-attr-3">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-attr-3" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/3/attr/0.wav&quot;, &quot;./joint_cond/3/attr/1.wav&quot;, &quot;./joint_cond/3/attr/2.wav&quot;, &quot;./joint_cond/3/attr/3.wav&quot;, &quot;./joint_cond/3/attr/4.wav&quot;]" data-audio-target="joint-audio-attr-3">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-attr-3" controls preload="none" src="./joint_cond/3/attr/4.wav" aria-label="Proposed (attribute guided only) for sample 3">
+                        Your browser does not support the audio element.
+                      </audio></td>
                     <td>
                       <label class="joint-audio-label" for="joint-clip-face-3">Masculinity strength</label>
                       <input type="range" class="slider joint-strength-slider" id="joint-clip-face-3" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/3/face/0.wav&quot;, &quot;./joint_cond/3/face/1.wav&quot;, &quot;./joint_cond/3/face/2.wav&quot;, &quot;./joint_cond/3/face/3.wav&quot;, &quot;./joint_cond/3/face/4.wav&quot;]" data-audio-target="joint-audio-face-3">
@@ -741,6 +763,13 @@
                     <td rowspan="2" class="joint-sentence">To feel without restraint—this is my path, this is the fox I follow.</td>
                     <td rowspan="2">
                       <audio id="joint-audio-rvtts-4" controls preload="none" src="./joint_cond/4/rvtts/output.wav" aria-label="RVTTS (face only) for sample 4">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td rowspan="2">
+                      <label class="joint-audio-label" for="joint-clip-attr-4">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-attr-4" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/4/attr/0.wav&quot;, &quot;./joint_cond/4/attr/1.wav&quot;, &quot;./joint_cond/4/attr/2.wav&quot;, &quot;./joint_cond/4/attr/3.wav&quot;, &quot;./joint_cond/4/attr/4.wav&quot;]" data-audio-target="joint-audio-attr-4">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-attr-4" controls preload="none" src="./joint_cond/4/attr/4.wav" aria-label="Proposed (attribute guided only) for sample 4">
                         Your browser does not support the audio element.
                       </audio></td>
                     <td>
@@ -768,6 +797,13 @@
                         Your browser does not support the audio element.
                       </audio></td>
                     <td>
+                      <label class="joint-audio-label" for="joint-clip-attr-5">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-attr-5" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/5/attr/0.wav&quot;, &quot;./joint_cond/5/attr/1.wav&quot;, &quot;./joint_cond/5/attr/2.wav&quot;, &quot;./joint_cond/5/attr/3.wav&quot;, &quot;./joint_cond/5/attr/4.wav&quot;]" data-audio-target="joint-audio-attr-5">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-attr-5" controls preload="none" src="./joint_cond/5/attr/4.wav" aria-label="Proposed (attribute guided only) for sample 5">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td>
                       <label class="joint-audio-label" for="joint-clip-face-5">Masculinity strength</label>
                       <input type="range" class="slider joint-strength-slider" id="joint-clip-face-5" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/5/face/0.wav&quot;, &quot;./joint_cond/5/face/1.wav&quot;, &quot;./joint_cond/5/face/2.wav&quot;, &quot;./joint_cond/5/face/3.wav&quot;, &quot;./joint_cond/5/face/4.wav&quot;]" data-audio-target="joint-audio-face-5">
                       <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
@@ -788,6 +824,13 @@
                     <td rowspan="2" class="joint-sentence">There was no response.</td>
                     <td rowspan="2">
                       <audio id="joint-audio-rvtts-6" controls preload="none" src="./joint_cond/6/rvtts/output.wav" aria-label="RVTTS (face only) for sample 6">
+                        Your browser does not support the audio element.
+                      </audio></td>
+                    <td rowspan="2">
+                      <label class="joint-audio-label" for="joint-clip-attr-6">Masculinity strength</label>
+                      <input type="range" class="slider joint-strength-slider" id="joint-clip-attr-6" min="0" max="4" step="1" value="4" data-clips="[&quot;./joint_cond/6/attr/0.wav&quot;, &quot;./joint_cond/6/attr/1.wav&quot;, &quot;./joint_cond/6/attr/2.wav&quot;, &quot;./joint_cond/6/attr/3.wav&quot;, &quot;./joint_cond/6/attr/4.wav&quot;]" data-audio-target="joint-audio-attr-6">
+                      <div class="joint-strength-scale"><span>Lowest strength</span><span>Highest strength</span></div>
+                      <audio id="joint-audio-attr-6" controls preload="none" src="./joint_cond/6/attr/4.wav" aria-label="Proposed (attribute guided only) for sample 6">
                         Your browser does not support the audio element.
                       </audio></td>
                     <td>
